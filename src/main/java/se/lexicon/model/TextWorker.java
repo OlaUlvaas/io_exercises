@@ -100,5 +100,19 @@ public class TextWorker {
         }
         return strings;
     }
+    //EXERCISES # 3
+    public static List<String> fromCollectionToFile (File newFile, List<String> colors){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(newFile))) {
+            for (String str : colors){
+                bw.write(str);
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(colors);
+        return colors;
+    }
 
 }
