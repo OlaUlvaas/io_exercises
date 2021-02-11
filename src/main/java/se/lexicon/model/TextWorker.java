@@ -75,5 +75,16 @@ public class TextWorker {
         return sb.toString();
     }
 
+    public static void writeNamesToFile(File destination, String src) {
+        try (FileWriter writer = new FileWriter(destination)) {
+            if(!destination.exists()) {
+                destination.createNewFile();
+            }
+            writer.write(src);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(src);
+    }
 
 }

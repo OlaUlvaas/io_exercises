@@ -20,9 +20,16 @@ public class App
         //Add text to file (lyrics to the song)
         TextWorker.addLyricsToSong();
 
-        ////Read from file EXERCISE # 1
+        //Read from file EXERCISE # 1
         File file = new File("home/sverige.txt");
         TextWorker.readText(file);
+
+        //EXERCISE # 2
+        File destination = new File("home/names.txt");
+        System.out.println("----------------------------------");
+        TextWorker.writeNamesToFile(destination, "Allan\nKalle\nPelle\nNisse");
+
+
     }
 
 }
