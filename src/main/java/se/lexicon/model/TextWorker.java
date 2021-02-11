@@ -3,6 +3,8 @@ package se.lexicon.model;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextWorker {
 
@@ -74,17 +76,29 @@ public class TextWorker {
         System.out.println(sb.toString());
         return sb.toString();
     }
-
-    public static void writeNamesToFile(File destination, String src) {
+    //EXERCISE # 2 Buffered Writer
+    public static void writeNamesToFile(File destination, String names) {
         try (FileWriter writer = new FileWriter(destination)) {
             if(!destination.exists()) {
                 destination.createNewFile();
             }
-            writer.write(src);
+            writer.write(names);
         } catch(IOException e) {
             e.printStackTrace();
         }
-        System.out.println(src);
+    }
+    //EXERCISE # 2 Buffered Reader
+    public static List<String> readIntoCollection(File url) {
+        List<String> strings = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(url))) {
+            String line;
+            while((line= reader.readLine()) != null) {
+                strings.add(line);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return strings;
     }
 
 }

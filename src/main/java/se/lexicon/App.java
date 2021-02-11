@@ -24,11 +24,16 @@ public class App
         File file = new File("home/sverige.txt");
         TextWorker.readText(file);
 
-        //EXERCISE # 2
+        //EXERCISE # 2 Buffered Reader
         File destination = new File("home/names.txt");
         System.out.println("----------------------------------");
         TextWorker.writeNamesToFile(destination, "Allan\nKalle\nPelle\nNisse");
-
+        //EXERCISE # 2 Buffered Writer
+        File url = new File("home/names.txt");
+        for (String string: TextWorker.readIntoCollection(url)) {
+            System.out.println(string);
+        }
+        System.out.println("----------------------------------");
 
     }
 
