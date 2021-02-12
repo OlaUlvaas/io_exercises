@@ -114,5 +114,21 @@ public class TextWorker {
         //System.out.println(colors);
         return colors;
     }
+    //EXERCISES # 4
+    public static void copy(File logga, File home) {
+        try (
+                BufferedInputStream in = new BufferedInputStream(new FileInputStream(logga));
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(home))
+        ) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) > 0) {
+                out.write(buffer, 0, bytesRead);
+                out.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
 
+        }
+    }
 }

@@ -48,6 +48,11 @@ public class App
         TextWorker.fromCollectionToFile(newFile, colors);
         System.out.println("----------------------------------");
 
+        //EXERCISE # 4
+        File logga = new File("C:\\Users\\Ola\\Desktop\\Java_g34\\afs_logga.jpg");
+        File home = new File("home/afs_logga_copy.jpg");
+        TextWorker.copy(logga,home);
+
     }
 
 }
