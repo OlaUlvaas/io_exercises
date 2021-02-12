@@ -17,6 +17,7 @@ public class TextWorker {
             if (!Files.exists(testPath)){
                 Files.createDirectory(testPath);
                 Files.createFile(testPath.resolve("sverige.txt"));
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,4 +132,39 @@ public class TextWorker {
 
         }
     }
+    //EXERCISES # 5b
+
+    public static List<Car> saveToList (List<Car> cars, String target){
+        try(
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(target))
+        ){
+            out.writeObject(cars);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
+
+    //EXERCISES # 5c
+
+    public static List<Car> readFromTarget(String filePath) {
+        try (
+                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath));
+
+        ) {
+            List<Car> destination = (List<Car>) ois.readObject();
+            return destination;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+
+        }
+        return null;
+
+    }
+
+
+
+
+
+
 }
