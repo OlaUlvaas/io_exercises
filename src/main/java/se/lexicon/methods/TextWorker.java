@@ -1,4 +1,7 @@
-package se.lexicon.model;
+package se.lexicon.methods;
+
+import se.lexicon.model.Car5;
+import se.lexicon.model.Car6;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -134,26 +137,26 @@ public class TextWorker {
     }
     //EXERCISES # 5b
 
-    public static List<Car> saveToList (List<Car> cars, String target){
+    public static List<Car5> saveToList (List<Car5> oldCars, String target){
         try(
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(target))
         ){
-            out.writeObject(cars);
+            out.writeObject(oldCars);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return cars;
+        return oldCars;
     }
 
     //EXERCISES # 5c
 
-    public static List<Car> readFromTarget(String filePath) {
+    public static List<Car5> readFromTarget(String filePath) {
         try (
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath));
 
         ) {
-            List<Car> destination = (List<Car>) ois.readObject();
-            return destination;
+            List<Car5> oldCars = (List<Car5>) ois.readObject();
+            return oldCars;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
 
@@ -161,10 +164,5 @@ public class TextWorker {
         return null;
 
     }
-
-
-
-
-
 
 }

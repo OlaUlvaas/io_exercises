@@ -1,36 +1,33 @@
 package se.lexicon.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
-public class Car implements Serializable {
+public class Car6 implements Serializable {
 
-    private int carId;
+    private UUID carId;
     private String regNumber;
     private String brand;
     private String model;
-    //private LocalDate regDate;
-    //private Owner owner;
+    private String regDate;
+    private Owner owner;
 
-
-    public Car() {
-
+    public Car6() {
+        this.carId = UUID.randomUUID();
     }
 
-    public Car(int carId, String regNumber, String brand, String model) {
-        this.carId = carId;
+    public Car6(String regNumber, String brand, String model, String regDate, Owner owner) {
+        this.carId = UUID.randomUUID();
         this.regNumber = regNumber;
         this.brand = brand;
         this.model = model;
+        this.regDate = regDate;
+        this.owner = owner;
     }
 
-    public int getCarId() {
+    public UUID getCarId() {
         return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
     }
 
     public String getRegNumber() {
@@ -57,11 +54,27 @@ public class Car implements Serializable {
         this.model = model;
     }
 
+    public String getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(String regDate) {
+        this.regDate = regDate;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
+        Car6 car = (Car6) o;
         return carId == car.carId && Objects.equals(regNumber, car.regNumber) && Objects.equals(brand, car.brand) && Objects.equals(model, car.model);
     }
 
@@ -72,11 +85,13 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "Car6{" +
                 "carId=" + carId +
                 ", regNumber='" + regNumber + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
+                ", regDate='" + regDate + '\'' +
+                ", owner=" + owner +
                 '}';
     }
 }
